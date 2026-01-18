@@ -28,5 +28,8 @@ app.delete("/tasks/:id", (req, res) => {
   res.json({ message: "Deleted" });
 });
 
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("Running on " + PORT));
+if (require.main === module) {
+  app.listen(PORT, () => console.log("Running on " + PORT));
+}
+
+module.exports = app;
