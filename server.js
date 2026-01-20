@@ -11,22 +11,27 @@ app.use(express.json());
 /* -------------------- MongoDB Connection -------------------- */
 async function connectDB() {
   await mongoose.connect(process.env.MONGO_URL);
-  console.log("MongoDB Connected");
+  console.log(" succesful and server running");
 }
 
 connectDB().catch(err => console.log("MongoDB Error:", err));
 
 /* -------------------- Task Model -------------------- */
-const TaskSchema = new mongoose.Schema({
-  title: String
+ const TaskSchema = new mongoose.Schema({
+  "name":"string"
 });
 
-const Task = mongoose.model("Task", TaskSchema);
+// // const Task = mongoose.model("Task", TaskSchema);
+// /* -------------------- Task Model -------------------- */
+//  const TaskSchema = new mongoose.Schema({
+//   title: String
+// });
+
 
 /* -------------------- Routes -------------------- */
 
 app.get("/", (req, res) => {
-  res.send("Backend is Live with Database");
+  res.send("Backend live but database not connected");
 });
 
 app.get("/tasks", async (req, res) => {
