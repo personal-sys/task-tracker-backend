@@ -32,7 +32,7 @@ const Task = mongoose.model("Task", TaskSchema);
 /* -------------------- Routes -------------------- */
 
 app.get("/", (req, res) => {
-  res.send("Backend is Live with Database");
+  res.send("Backend live but database not connected");
 });
 
 app.get("/tasks", async (req, res) => {
