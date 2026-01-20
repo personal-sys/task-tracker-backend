@@ -8,19 +8,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use((req, res, next) => {
-  console.log("Incoming:", req.method, req.url);
-  next();
-});
-
-
 /* -------------------- MongoDB Connection -------------------- */
 mongoose.connect(process.env.MONGO_URL)
   .then(() => console.log("MongoDB Connected"))
   .catch(err => console.log("MongoDB Error:", err));
-
-console.log("MONGO_URL =", process.env.MONGO_URL);
-
 
 /* -------------------- Task Model -------------------- */
 const TaskSchema = new mongoose.Schema({
@@ -41,7 +32,6 @@ app.get("/tasks", async (req, res) => {
 });
 
 app.post("/tasks", async (req, res) => {
-    console.log("BODY RECEIVED:", req.body);
   const task = new Task({ title: req.body.title });
   await task.save();
   res.status(201).json(task);
