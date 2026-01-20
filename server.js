@@ -17,11 +17,11 @@ async function connectDB() {
 connectDB().catch(err => console.log("MongoDB Error:", err));
 
 /* -------------------- Task Model -------------------- */
-const TaskSchema = new mongoose.Schema({
-  title: String
-});
+// const TaskSchema = new mongoose.Schema({
+//   title: String
+// });
 
-const Task = mongoose.model("Task", TaskSchema);
+// const Task = mongoose.model("Task", TaskSchema);
 
 /* -------------------- Routes -------------------- */
 
