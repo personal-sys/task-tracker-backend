@@ -9,9 +9,12 @@ app.use(cors());
 app.use(express.json());
 
 /* -------------------- MongoDB Connection -------------------- */
-mongoose.connect(process.env.MONGO_URL)
-  .then(() => console.log("MongoDB Connected"))
-  .catch(err => console.log("MongoDB Error:", err));
+async function connectDB() {
+  await mongoose.connect(process.env.MONGO_URL);
+  console.log("MongoDB Connected");
+}
+
+connectDB().catch(err => console.log("MongoDB Error:", err));
 
 /* -------------------- Task Model -------------------- */
 const TaskSchema = new mongoose.Schema({
